@@ -8,29 +8,31 @@ namespace ModemConnect.adapter.presenters.implementations {
 
         private MainWindowView mainWindowView;
         private ModemService modemService;
-        private ServerService serverService;
 
         public ModemPresenterImpl(MainWindowView mainWindowView) {
             this.mainWindowView = mainWindowView;
             modemService = new ModemServiceImpl(this);
-            serverService = new ServerControlServiceImpl(this);
         }
 
         public void onCommandTyped(string text) {
             mainWindowView.showInCommandHistory(text);
+            modemService.executeCommand(text);
         }
 
         public void onPortSelected(string port) {
-            modemService.tryToConnectModem(port);
+            if (port != null && port.Contains("COM")) {
+                modemService.tryToConnectModem(port);
+            } else {
+                mainWindowView.showInCommandHistory("ZŁY PORT!");
+            }
         }
 
         public void onViewCreated() {
-
+            mainWindowView.listAvailablePorts(modemService.getPorts());
         }
 
         public void onDestroyView() {
             modemService.disconnect();
-            serverService.stop();
         }
 
         public void onDataReceived(string data) {
@@ -47,13 +49,17 @@ namespace ModemConnect.adapter.presenters.implementations {
 
 
         public void onServerStatusChanged() {
-            if (serverService.isRunning()) {
-                serverService.stop();
+            if (modemService.isServerRunning()) {
+                modemService.stopServer();
                 mainWindowView.setServerButtonText("Serwer wyłączony");
             } else {
-                serverService.start();
+                modemService.startServer();
                 mainWindowView.setServerButtonText("Serwer włączony");
             }
+        }
+
+        public void onDial(string number) {
+            modemService.dialWith(number);
         }
     }
 }

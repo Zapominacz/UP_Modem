@@ -22,7 +22,6 @@ namespace ModemConnect {
         private void onSendCommandButtonPressed(object sender, EventArgs e) {
             String command = commandLineTextBox.Text;
             presenter.onCommandTyped(command);
-            showInCommandHistory(command);
             commandLineTextBox.Clear();
         }
 
@@ -31,7 +30,7 @@ namespace ModemConnect {
         }
 
         public void showInCommandHistory(string information) {
-            commandHistoryTextBox.Text += ('>' + information + '\n');
+            commandHistoryTextBox.Text += ('>' + information + Environment.NewLine);
         }
 
         public void listAvailablePorts(string[] ports) {
@@ -51,6 +50,23 @@ namespace ModemConnect {
 
         public void setServerButtonText(string text) {
             serverButton.Text = text;
+        }
+
+        private void onDialButtonClicked(object sender, EventArgs e) {
+            String number = dialTextBox.Text;
+            presenter.onDial(number);
+            showInCommandHistory("Dzwonimy do: " + number);
+            dialStarted();
+        }
+
+        public void dialEnded() {
+            dialTextBox.Enabled = true;
+            dialButton.Enabled = false;
+        }
+
+        public void dialStarted() {
+            dialTextBox.Enabled = false;
+            dialButton.Enabled = false;
         }
     }
 }

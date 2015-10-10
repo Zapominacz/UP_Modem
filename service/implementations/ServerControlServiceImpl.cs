@@ -1,21 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using ModemConnect.adapter.presenters;
 using ModemConnect.adapter.presenters.implementations;
-using ModemConnect.service;
 
 namespace ModemConnect.service.implementations {
     class ServerControlServiceImpl : ServerService {
-        private ModemPresenterImpl modemPresenterImpl;
 
-        public ServerControlServiceImpl(ModemPresenterImpl modemPresenterImpl) {
-            this.modemPresenterImpl = modemPresenterImpl;
+        private ModemService modemService;
+        private bool running;
+
+        public ServerControlServiceImpl(ModemService modemService) {
+            this.modemService = modemService;
         }
 
-        public string readFileToString(string v) {
-            throw new NotImplementedException();
+        public bool isRunning() {
+            return running;
+        }
+
+        public string readFileToString(string path) {
+            String result = null;
+            try {
+                using (StreamReader sr = new StreamReader("TestFile.txt")) {
+                    result = sr.ReadToEnd();
+                }
+            } catch (Exception e) {
+                result = "The file could not be read:" + e.Message;
+            }
+            return result;
+        }
+
+        public void start() {
+            running = true;
+        }
+
+        public void stop() {
+            running = false;
         }
     }
 }

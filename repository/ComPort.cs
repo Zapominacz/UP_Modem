@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO.Ports;
 
-namespace ModemConnect.Repository.Ports {
+namespace ModemConnect.repository {
     class ComPort {
 
         private SerialPort comPort;
@@ -24,16 +24,19 @@ namespace ModemConnect.Repository.Ports {
             comPort.PortName = port;
             comPort.DataReceived += new SerialDataReceivedEventHandler(DataReceviedHandler);
             comPort.Open();
+            currentPort = port;
         }
 
-        public void closePort(String port) {
+        public void closePort() {
             comPort.DataReceived -= DataReceviedHandler;
             comPort.Close();
+            currentPort = null;
         }
 
         public void setListener(PortDataReceivedListener listener) {
             this.changedListener = listener;
         }
+
 
         private void DataReceviedHandler(object sender, SerialDataReceivedEventArgs e) {
             buffer += comPort.ReadExisting();
@@ -46,6 +49,10 @@ namespace ModemConnect.Repository.Ports {
 
         public void sendMessage(String result) {
             comPort.WriteLine(result);
+        }
+
+        public bool isConnected() {
+            return currentPort != null;
         }
     }
 

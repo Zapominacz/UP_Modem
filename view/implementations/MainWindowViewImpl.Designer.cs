@@ -34,6 +34,8 @@
             this.commandLineTextBox = new System.Windows.Forms.TextBox();
             this.sendButton = new System.Windows.Forms.Button();
             this.serverButton = new System.Windows.Forms.Button();
+            this.dialTextBox = new System.Windows.Forms.TextBox();
+            this.dialButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // portListBox
@@ -56,9 +58,11 @@
             // 
             // commandHistoryTextBox
             // 
+            this.commandHistoryTextBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.commandHistoryTextBox.Location = new System.Drawing.Point(13, 13);
             this.commandHistoryTextBox.Multiline = true;
             this.commandHistoryTextBox.Name = "commandHistoryTextBox";
+            this.commandHistoryTextBox.ReadOnly = true;
             this.commandHistoryTextBox.Size = new System.Drawing.Size(482, 251);
             this.commandHistoryTextBox.TabIndex = 2;
             // 
@@ -90,11 +94,30 @@
             this.serverButton.UseVisualStyleBackColor = true;
             this.serverButton.Click += new System.EventHandler(this.serverButtonClicked);
             // 
+            // dialTextBox
+            // 
+            this.dialTextBox.Location = new System.Drawing.Point(501, 173);
+            this.dialTextBox.Name = "dialTextBox";
+            this.dialTextBox.Size = new System.Drawing.Size(116, 20);
+            this.dialTextBox.TabIndex = 6;
+            // 
+            // dialButton
+            // 
+            this.dialButton.Location = new System.Drawing.Point(501, 200);
+            this.dialButton.Name = "dialButton";
+            this.dialButton.Size = new System.Drawing.Size(116, 23);
+            this.dialButton.TabIndex = 7;
+            this.dialButton.Text = "Dzwoń";
+            this.dialButton.UseVisualStyleBackColor = true;
+            this.dialButton.Click += new System.EventHandler(this.onDialButtonClicked);
+            // 
             // MainWindowViewImpl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(630, 302);
+            this.Controls.Add(this.dialButton);
+            this.Controls.Add(this.dialTextBox);
             this.Controls.Add(this.serverButton);
             this.Controls.Add(this.sendButton);
             this.Controls.Add(this.commandLineTextBox);
@@ -116,6 +139,8 @@
         private System.Windows.Forms.TextBox commandLineTextBox;
         private System.Windows.Forms.Button sendButton;
         private System.Windows.Forms.Button serverButton;
+        private System.Windows.Forms.TextBox dialTextBox;
+        private System.Windows.Forms.Button dialButton;
     }
 }
 

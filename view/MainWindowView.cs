@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ModemConnect.view {
     interface MainWindowView {
-
+        void dialEnded();
+        void dialStarted();
         void showInCommandHistory(String information);
         void listAvailablePorts(String[] ports);
         void setConnectButtonText(String text);

@@ -12,6 +12,6 @@ namespace ModemConnect.adapter.presenters {
         void onDataReceived(String data);
         void onError(String error);
         void onServerStatusChanged();
-
+        void onDial(string number);
     }
 }
