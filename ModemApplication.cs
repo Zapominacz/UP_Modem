@@ -10,7 +10,7 @@ namespace ModemConnect.View {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindowView());
+            Application.Run(new MainWindowViewImpl());
         }
     }
 }

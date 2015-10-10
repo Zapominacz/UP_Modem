@@ -5,15 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using ModemConnect.Repository.Ports;
 
-namespace ModemConnect {
+namespace ModemConnect.adapter {
     class HayesAdapter {
 
         private ComPort port;
-        private readonly ModemService service;
+        private readonly ModemServiceImpl service;
         private ServerControlService serverService;
         private bool dataMode;
 
-        public HayesAdapter(ModemService service) {
+        public HayesAdapter(ModemServiceImpl service) {
             this.service = service;
             port = new ComPort();
         }

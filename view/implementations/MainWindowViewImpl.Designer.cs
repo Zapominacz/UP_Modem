@@ -1,6 +1,6 @@
 ﻿namespace ModemConnect
 {
-    partial class MainWindowView
+    partial class MainWindowViewImpl
     {
         /// <summary>
         /// Required designer variable.
@@ -33,6 +33,7 @@
             this.commandHistoryTextBox = new System.Windows.Forms.TextBox();
             this.commandLineTextBox = new System.Windows.Forms.TextBox();
             this.sendButton = new System.Windows.Forms.Button();
+            this.serverButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // portListBox
@@ -67,6 +68,7 @@
             this.commandLineTextBox.Name = "commandLineTextBox";
             this.commandLineTextBox.Size = new System.Drawing.Size(401, 20);
             this.commandLineTextBox.TabIndex = 3;
+            this.commandLineTextBox.TextChanged += new System.EventHandler(this.commandLineTextBox_TextChanged);
             // 
             // sendButton
             // 
@@ -78,17 +80,28 @@
             this.sendButton.UseVisualStyleBackColor = true;
             this.sendButton.Click += new System.EventHandler(this.onSendCommandButtonPressed);
             // 
-            // MainWindow
+            // serverButton
+            // 
+            this.serverButton.Location = new System.Drawing.Point(501, 143);
+            this.serverButton.Name = "serverButton";
+            this.serverButton.Size = new System.Drawing.Size(116, 24);
+            this.serverButton.TabIndex = 5;
+            this.serverButton.Text = "Włącz server";
+            this.serverButton.UseVisualStyleBackColor = true;
+            this.serverButton.Click += new System.EventHandler(this.serverButtonClicked);
+            // 
+            // MainWindowViewImpl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(630, 302);
+            this.Controls.Add(this.serverButton);
             this.Controls.Add(this.sendButton);
             this.Controls.Add(this.commandLineTextBox);
             this.Controls.Add(this.commandHistoryTextBox);
             this.Controls.Add(this.connectPortButton);
             this.Controls.Add(this.portListBox);
-            this.Name = "MainWindow";
+            this.Name = "MainWindowViewImpl";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -102,6 +115,7 @@
         private System.Windows.Forms.TextBox commandHistoryTextBox;
         private System.Windows.Forms.TextBox commandLineTextBox;
         private System.Windows.Forms.Button sendButton;
+        private System.Windows.Forms.Button serverButton;
     }
 }
 
