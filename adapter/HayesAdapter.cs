@@ -20,8 +20,12 @@ namespace ModemConnect.adapter {
         }
 
         public void dialWith(String number) {
-            port.sendMessage("ATDT" + number + NEWLINE);
-            dataMode = true;
+            if (port.isConnected()) {
+                port.sendMessage("ATDT" + number + NEWLINE);
+                dataMode = true;
+            } else {
+                service.dataReceived("Port jest zamknięty!");
+            }
         }
 
         public void changeDataMode(bool commandMode) {

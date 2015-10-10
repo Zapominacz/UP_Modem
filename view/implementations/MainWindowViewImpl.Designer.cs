@@ -63,6 +63,7 @@
             this.commandHistoryTextBox.Multiline = true;
             this.commandHistoryTextBox.Name = "commandHistoryTextBox";
             this.commandHistoryTextBox.ReadOnly = true;
+            this.commandHistoryTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.commandHistoryTextBox.Size = new System.Drawing.Size(482, 251);
             this.commandHistoryTextBox.TabIndex = 2;
             // 

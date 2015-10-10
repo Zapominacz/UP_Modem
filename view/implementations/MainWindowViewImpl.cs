@@ -61,12 +61,12 @@ namespace ModemConnect {
 
         public void dialEnded() {
             dialTextBox.Enabled = true;
-            dialButton.Enabled = false;
+            dialButton.Text = "Połącz";
         }
 
         public void dialStarted() {
             dialTextBox.Enabled = false;
-            dialButton.Enabled = false;
+            dialButton.Text = "Rozłącz";
         }
     }
 }
