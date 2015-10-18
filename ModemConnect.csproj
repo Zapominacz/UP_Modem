@@ -46,28 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="adapter\presenters\ModemPresenter.cs" />
-    <Compile Include="model\HayesCommand.cs" />
-    <Compile Include="model\ServerCommand.cs" />
-    <Compile Include="service\ModemService.cs" />
-    <Compile Include="service\ServerService.cs" />
-    <Compile Include="view\implementations\MainWindowViewImpl.cs">
+    <Compile Include="MainWindowView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\implementations\MainWindowViewImpl.Designer.cs">
-      <DependentUpon>MainWindowViewImpl.cs</DependentUpon>
+    <Compile Include="MainWindowView.Designer.cs">
+      <DependentUpon>MainWindowView.cs</DependentUpon>
     </Compile>
-    <Compile Include="adapter\HayesAdapter.cs" />
     <Compile Include="ModemApplication.cs" />
-    <Compile Include="adapter\presenters\implementations\ModemPresenterImpl.cs" />
-    <Compile Include="service\implementations\ModemServiceImpl.cs" />
-    <Compile Include="adapter\presenters\Presenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="repository\ComPort.cs" />
-    <Compile Include="service\implementations\ServerControlServiceImpl.cs" />
-    <Compile Include="view\MainWindowView.cs" />
-    <EmbeddedResource Include="view\implementations\MainWindowViewImpl.resx">
-      <DependentUpon>MainWindowViewImpl.cs</DependentUpon>
+    <EmbeddedResource Include="MainWindowView.resx">
+      <DependentUpon>MainWindowView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -91,7 +79,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="lena_color.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
